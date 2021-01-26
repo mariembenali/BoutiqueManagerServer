@@ -22,17 +22,17 @@ public class Categorie implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//generation automatique
     private int id;
 
-    @Column(length = 50, unique = true)
+    @Column(length = 50, unique = true)//critere sur le column (libelle unique + 50 length max)
     private String libelle;
 
-    @OneToMany(mappedBy = "categorie")
+    @OneToMany(mappedBy = "categorie")//onetomany exige list
     private List<Produit> produits;
 
-    @OneToMany(mappedBy = "categorie", fetch = FetchType.EAGER)
-    private List<Marque> marques;
+    @OneToMany(mappedBy = "categorie", fetch = FetchType.EAGER)//yfetchi l categorie wel les marque li tahtha maaha au mm temps(ki naaml instance categorie l marque tetkhla9 maaha)
+     private List<Marque> marques;
 
     public Categorie(){
         produits = new ArrayList<>();
